@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="single category">
+            {% if results %}
+
+            <h3 class="side-title">Results</h3>
+            <ul class="list-unstyled">
+
+                    {% for result in results %}
+
+                    <li>{{ result.content }}</li>
+    
+                    {% endfor %}
+
+            {% endif %}
+
+            {% if not results %}
+
+            <h5>Sorry no such results available</h5>
+
+            {% endif %}
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

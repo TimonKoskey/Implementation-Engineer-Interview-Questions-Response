@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+        <form class="card card-sm" action="{% url 'results' %}" method="post">
+            {% csrf_token %}
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col-auto">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <input class="form-control form-control-lg form-control-borderless" type="search" name="query"
+                            placeholder="Search names">
+                    </fieldset>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-lg btn-success" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
