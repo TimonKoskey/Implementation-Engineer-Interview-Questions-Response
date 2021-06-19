@@ -4,7 +4,7 @@
 
 **1.The following are examples of integration protocals.**
 
-* <u>Application programming interface (API).</u>
+* <u>**Application programming interface (API).**</u>
 
     APIs define an interaction between two software applications by defining requests to be made, how to make them and the data formats. In the demontration at file [api.py](section_A/api.py), **Flask** is used to create a web API that receives a **GET** request and returns a JSON formated data containing a list of colors. Flask is a micro web framework written in python. To learn more check out [flask documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/)
 
@@ -14,7 +14,13 @@
 
     1. A list of color objects is created
 
-    1. A function called *get_colors* is defined, this function is a web API that listens to a http GET request on route */colors/all* and returns a JSON formated data containing color objects. This method therefore acts as an interface where other applications can make a GET request for colors through the url defined and this method will send back the list of colors.
+    1. A method *get_colors* is defined, this function is a web API that listens to a http GET request on route */colors/all* and returns a JSON formated data containing color objects. This method therefore acts as an interface where other applications can make a GET request for colors through the url defined and this method will send back the list of colors.
+
+    1. Another method *add_color* listens for a post rquest on the defined route, using request imported from flask module the method gets the json data consisting of a list of new colors to be added to our colors list. It extends our list and returns the new list to the API caller. Using curl to test our API.
+
+    ```bash
+    curl -X POST -H "Content-Type: application/json" -d '[{"color":"maroon", "value": "#800000"},{"color":"crimson", "value": "#DC143C"},{"color":"salmon", "value": "#FA8072"}]' http://127.0.0.1:8000/colors/add
+    ```
 
     To run the script intall flask by running the following command in your terminal.
 
@@ -37,8 +43,9 @@
     The results should look like this:
 
     ![screenshot](/images/api-demo-screenshot.png?raw=true)
+    ![screenshot](/images/curl_screenshot.png?raw=true)
 
-* <u>Webhooks.</u>
+* <u>**Webhooks.**</u>
 
     Webhooks are are events emited by an application that other applications can react to them. In the demo at file [webhooks](section_A/webhooks.py) **Flask** is used to create a **POST** web API that takes a request from a Github webhook which sends POST data every time a change is made to a specific repository.
 
@@ -72,6 +79,26 @@
   ![screenshot](/images/webhooks_screenshot.png?raw=true)
 
   <br>
+
+**2. Management of a data streaming application.**
+
+1. Using Docker Containers and Kubernetes.
+
+    Docker containers are lightweight isolated environments that enable deployment of multiple applications on the same operating system with maximum utilization of system resources such as memory. With this application running in a docker container there can be multiple versions of the same application yet isolated from each other therfore. This means that if one container fails to operate, the streaming process is picked up by another. Kubernetes is a platform for managing containerized services, this will help in management of streams through load balancing and scaling.
+
+1. Stream processing.
+
+    The application will use platforms like **Apache Kafka** or **Amazon Kinesis** in to ingest data streams from the API. These platforms can standardise the stream formats and send it down the application stack for further processing.
+
+1. Extract Transform and Load (ETL).
+
+    Using tools like **Spark Streaming** or **Apache Storm** in the the streaming application to further transform the data streams from stream processing platforms. This is the proess that will prepare the streaming data for analytics or storage by performing additional joins, transformations on aggregations on the data.
+
+1. Data Analytics and storage.
+
+    After streaming notification data is prepared for consumption it should then be annalyzed and stored using tools like **Elasticsearch** **Cassandra** **Amazon Redshift** and **Amazon Athena**
+
+<br>
 
 **3.The following are examples of encryption methods.**
 

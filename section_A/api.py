@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -40,6 +40,12 @@ def home_page():
 @app.route("/colors/all", methods=['GET'])
 def get_colors():
     return jsonify(colors)
+
+@app.route("/colors/add", methods=["POST"])
+def add_color():
+	new_colors = request.json
+	colors.extend(new_colors)
+	return jsonify(colors)
 
 
 
