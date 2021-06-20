@@ -10,7 +10,7 @@ services:
             - static_data:vol/web
         environment: 
             - SECRET_KEY=django-insecure-l6=&d4p*ikxdgojt2%l9obqe_72o+x-hzvqz^u59^-ioghvv*m
-            - DEBUG=1
+            - DEBUG=0
             - ALLOWED_HOSTS=127.0.0.1,localhost
         depends_on: 
             - db

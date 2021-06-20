@@ -68,12 +68,11 @@ if DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myproject',
-            'USER': 'myprojectuser',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',
-            'PORT': '',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db',
+            'PORT': 5432,
         }
     }
 
