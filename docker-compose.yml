@@ -7,7 +7,7 @@ services:
         ports: 
             - "8000:8000"
         volumes: 
-            - static_data:vol/web
+            - static_data:/vol/web
         environment: 
             - SECRET_KEY=django-insecure-l6=&d4p*ikxdgojt2%l9obqe_72o+x-hzvqz^u59^-ioghvv*m
             - DEBUG=0
@@ -17,12 +17,15 @@ services:
 
     db:
         image: postgres
+        environment:
+            POSTGRES_DB: "db"
+            POSTGRES_HOST_AUTH_METHOD: "trust"
 
     proxy:
         build: 
             context: ./proxy
         volumes: 
-            - static_data:/vol/static
+            - static_data:/vol/web
         ports: 
             - "8080:8080"
 
