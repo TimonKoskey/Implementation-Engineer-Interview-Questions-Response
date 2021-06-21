@@ -25,7 +25,7 @@ services:
         build: 
             context: ./proxy
         volumes: 
-            - static_data:/vol/web
+            - static_data:/vol/static
         ports: 
             - "8080:8080"
 
